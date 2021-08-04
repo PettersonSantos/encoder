@@ -1,9 +1,9 @@
 package domain_test
 
 import (
+	"github.com/stretchr/testify/require"
 	"project-enconder/domain"
 	"testing"
-	"github.com/stretchr/testify/require"
 )
 
 func TestValidateIfVideoIsEmpty(t *testing.T) {
