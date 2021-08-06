@@ -20,7 +20,7 @@ func TestJobRepositoryDbInsert(t *testing.T) {
 	video.FilePath = "path"
 	video.CreatedAt = time.Now()
 
-	repo := repositories.VideoRepositoryDb{Db:db}
+	repo := repositories.VideoRepositoryDb{Db: db}
 	repo.Insert(video)
 
 	job, err := domain.NewJob("output_path", "Pending", video)
@@ -30,7 +30,7 @@ func TestJobRepositoryDbInsert(t *testing.T) {
 	repoJob := repositories.JobRepositoryDb{Db: db}
 	repoJob.Insert(job)
 
-	j,err := repoJob.Find(job.ID)
+	j, err := repoJob.Find(job.ID)
 	require.NotEmpty(t, j.ID)
 	require.Nil(t, err)
 	require.Equal(t, j.ID, job.ID)
@@ -48,7 +48,7 @@ func TestJobRepositoryDbUpdate(t *testing.T) {
 	video.FilePath = "path"
 	video.CreatedAt = time.Now()
 
-	repo := repositories.VideoRepositoryDb{Db:db}
+	repo := repositories.VideoRepositoryDb{Db: db}
 	repo.Insert(video)
 
 	job, err := domain.NewJob("output_path", "Pending", video)
@@ -62,7 +62,7 @@ func TestJobRepositoryDbUpdate(t *testing.T) {
 
 	repoJob.Update(job)
 
-	j,err := repoJob.Find(job.ID)
+	j, err := repoJob.Find(job.ID)
 	require.NotEmpty(t, j.ID)
 	require.Nil(t, err)
 	require.Equal(t, j.Status, job.Status)
