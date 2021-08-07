@@ -14,7 +14,7 @@ import (
 )
 
 func init() {
-	err := godotenv.Load("../../.env")
+	err := godotenv.Load("../../../.env")
 	if err != nil {
 		log.Fatalf("Error loading .env file")
 	}
@@ -43,5 +43,8 @@ func TestVideoServiceDownload(t *testing.T) {
 	videoService.VideoRepository = repo
 
 	err := videoService.Download("encondertest")
+	require.Nil(t, err)
+
+	err = videoService.Fragment()
 	require.Nil(t, err)
 }
