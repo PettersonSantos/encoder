@@ -22,8 +22,7 @@ func NewVideoRepository(db *gorm.DB) *VideoRepositoryDb {
 
 func (repo VideoRepositoryDb) Insert(video *domain.Video) (*domain.Video, error) {
 	if video.ID == "" {
-		id, _ := uuid.NewV4()
-		video.ID = id.String()
+		video.ID = uuid.NewV4().String()
 	}
 
 	err := repo.Db.Create(video).Error

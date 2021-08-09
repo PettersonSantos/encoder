@@ -1,4 +1,4 @@
-package services_test
+package services
 
 import (
 	"github.com/joho/godotenv"
@@ -25,8 +25,7 @@ func prepare() (*domain.Video, repositories.VideoRepositoryDb) {
 	defer db.Close()
 
 	video := domain.NewVideo()
-	id, _ := uuid.NewV4()
-	video.ID = id.String()
+	video.ID = uuid.NewV4().String()
 	video.FilePath = "filhodomato.mp4"
 	video.CreatedAt = time.Now()
 
@@ -46,5 +45,8 @@ func TestVideoServiceDownload(t *testing.T) {
 	require.Nil(t, err)
 
 	err = videoService.Fragment()
+	require.Nil(t, err)
+
+	err = videoService.Encode()
 	require.Nil(t, err)
 }

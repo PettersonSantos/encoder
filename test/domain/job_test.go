@@ -1,4 +1,4 @@
-package domain_test
+package domain
 
 import (
 	uuid "github.com/satori/go.uuid"
@@ -10,8 +10,7 @@ import (
 
 func TestNewJob(t *testing.T) {
 	video := domain.NewVideo()
-	id, _ := uuid.NewV4()
-	video.ID = id.String()
+	video.ID = uuid.NewV4().String()
 	video.FilePath = "path"
 	video.CreatedAt = time.Now()
 

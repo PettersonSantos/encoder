@@ -43,8 +43,7 @@ func NewJob2() *Job {
 }
 
 func (job *Job) prepare() {
-	id, _ := uuid.NewV4()
-	job.ID = id.String()
+	job.ID = uuid.NewV4().String()
 	job.CreatedAt = time.Now()
 	job.UpdatedAt = time.Now()
 }
