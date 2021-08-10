@@ -90,7 +90,7 @@ func (vu *VideoUpload) uploadWorker(in chan int, returnChannel chan string, uplo
 
 		returnChannel <- ""
 	}
-	returnChannel <- "uploaded completed"
+	returnChannel <- "upload completed"
 }
 
 func (vu *VideoUpload) loadPaths() error {
